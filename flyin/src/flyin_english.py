@@ -1,6 +1,7 @@
 import time
 from appium import webdriver
 from appium.webdriver.common.touch_action import TouchAction
+import calendar as cal
 
 hotel_names = ['Kempinski Hotel Mall of the Emirates']
 appwaitactivity = "com.flyin.bookings.activities.SplashScreenActivity"
@@ -27,17 +28,17 @@ driver.find_element_by_id('com.flyin.bookings:id/rl_img_flight').click()
 # Enter Departure
 driver.find_element_by_id('com.flyin.bookings:id/linear_departure').click()
 enter_departure = driver.find_element_by_id('com.flyin.bookings:id/et_search')
-enter_departure.send_keys('RUH')
+enter_departure.send_keys('JED')
 driver.execute_script('mobile: performEditorAction', {'action': 'search'})
-driver.find_element_by_xpath('//*[@resource-id="com.flyin.bookings:id/txt_countrycode" and @text="RUH"]').click()
+driver.find_element_by_xpath('//*[@resource-id="com.flyin.bookings:id/txt_countrycode" and @text="JED"]').click()
 
 # Enter Destination
 
 driver.find_element_by_id('com.flyin.bookings:id/linear_destination').click()
 enter_departure = driver.find_element_by_id('com.flyin.bookings:id/et_search')
-enter_departure.send_keys('AHB')
+enter_departure.send_keys('RUH')
 driver.execute_script('mobile: performEditorAction', {'action': 'search'})
-driver.find_element_by_xpath('//*[@resource-id="com.flyin.bookings:id/txt_countrycode" and @text="AHB"]').click()
+driver.find_element_by_xpath('//*[@resource-id="com.flyin.bookings:id/txt_countrycode" and @text="RUH"]').click()
 
 # Onward and Return Date
 driver.find_element_by_id('com.flyin.bookings:id/tv_return_date_one').click()

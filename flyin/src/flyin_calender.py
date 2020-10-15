@@ -9,8 +9,8 @@ def Onward():
     return onward_date
 
 
-def Return(onward_date):
-    return_date = onward_date + datetime.timedelta(2)
+def Return(onward_date, days_of_return):
+    return_date = onward_date + datetime.timedelta(days_of_return)
     return return_date
 
 
@@ -92,5 +92,5 @@ def monthend(date):
 
 a = Onward()
 print(a)
-b = Return(a)
+b = Return(a,2)
 print(b)
