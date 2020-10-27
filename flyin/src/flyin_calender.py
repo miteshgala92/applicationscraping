@@ -3,9 +3,9 @@ import calendar
 import monthdelta as monthdelta
 
 
-def Onward():
+def Onward(number_of_days):
     d = datetime.date.today()
-    onward_date = d + datetime.timedelta(3)
+    onward_date = d + datetime.timedelta(number_of_days)
     return onward_date
 
 
@@ -62,7 +62,7 @@ def number_of_weeks(date):
 
 
 def weekday(date):
-    weekday = date.weekday() + 2
+    weekday = date.weekday() + 1
     if weekday > 7:
         weekday = weekday - 7
     return weekday
@@ -90,7 +90,15 @@ def monthend(date):
     return False
 
 
-a = Onward()
-print(a)
-b = Return(a,2)
-print(b)
+#departure_date = Onward(3)
+#print(departure_date)
+#b = Return(a,2)
+#print(b)
+#cs=calenderswipe(departure_date)
+#print(cs)
+#wn = weeknumber(departure_date)
+#print(wn)
+#wd = weekday(departure_date)
+#print(wd)
+#nof = number_of_weeks(departure_date)
+#print(nof)

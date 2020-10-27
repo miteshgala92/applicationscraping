@@ -7,6 +7,7 @@
     "log_file_path": "/Users/mitesh.gala/PycharmProjects/applicationscraping/booking/logs/"
   },
   "output_location": "/Users/mitesh.gala/PycharmProjects/applicationscraping/booking/target/",
+  "screenshots": "/Users/mitesh.gala/PycharmProjects/applicationscraping/booking/screenshots/",
   "details": {
     "elements": {
       "search_form": "com.booking:id/search_details_text",
@@ -29,153 +30,154 @@
     "city": {
       "Dubai": {
         "hotels_list": [
-          "Anantara The Palm Dubai",
-          "Atlantis The Palm, Dubai",
-          "Address Dubai Mall",
+          "Kempinski Hotel Mall of the Emirates",
+          "Sofitel Dubai Jumeirah Beach",
+          "Emirates Grand Hotel Apartments",
+          "M√∂venpick Hotel & Apartments Bur Dubai",
+          "Roda Al Murooj Hotel",
+          "Anantara The Palm Dubai Resort",
           "Rixos Premium Dubai JBR",
-          "Address Boulevar",
-          "Nikki Beach Resort & Spa Dubai",
-          "Kempinski Hotel Mall of Emirates",
-          "Sheraton Mall of the Emirates Hotel Dubai",
-          "Bulgari Resort Dubai",
-          "JA Hatta Fort Hotel"
+          "Ramada Downtown Dubai",
+          "Rove At The Park",
+          "Abjad Grand Hotel"
         ]
       },
       "Sharjah": {
-        "hotels_list": ["Marbella Resort",
-          "OYO 122 Crystal Plaza Hotel",
-          "Copthorne Hotel Sharjah",
-          "Al Badayer Retreat",
-          "Sheraton Sharjah",
+        "hotels_list": [
+          "Marbella Resort Sharjah",
           "Golden Sands Hotel Sharjah",
+          "Occidental Sharjah Grand",
+          "Copthorne Hotel Sharjah",
           "Al Maha Regency",
-          "Holiday International Sharjah",
-          "lou lou beach resort",
-          "aldar hotel sharjah"
+          "Sharjah International Airport Hotel",
+          "Golden Tulip Sharjah",
+          "TIME Ruby Hotel Apartments",
+          "Al Badayer Retreat",
+          "Al Salam Grand Hotel-Sharjah"
         ]
       },
       "Riyadh": {
-        "hotels_list":["Durrat Al Riyadh Resort",
-          "Hyatt Regency Riyadh Olaya",
-          "Burj Rafal Riyadh",
-          "Novotel Suites Riyadh Dyar",
-          "Ascott Rafal Olaya Riyadh",
+        "hotels_list":[
+          "Durrat Al Riyadh Resort & Spa",
           "Novotel Riyadh Al Anoud",
-          "Hilton Riyadh Hotel & Residences",
-          "Tulip Inn Riyadh",
-          "Narcissus Hotel & Residence Riyadh",
-          "Vivienda Hotel Villas"
-          ]
+          "Hyatt Regency Riyadh Olaya",
+          "The Ritz-Carlton, Riyadh",
+          "Novotel Suites Riyadh Dyar",
+          "Holiday Inn Riyadh Al Qasr",
+          "Centro Olaya by Rotana",
+          "DoubleTree by Hilton Hotel Riyadh - Al Muroj Business Gate"
+        ]
       },
       "Jeddah": {
         "hotels_list": [
-          "Rosewood Jeddah",
-          "Movenpick Al Nawras Jeddah",
           "Narcissus Resort & spa Obhur Jeddah",
+          "Mira Waterfront Hotel",
+          "Movenpick Al Nawras Jeddah - Family Resort",
           "Makarem Annakheel Hotel & Resort",
-          "Mira Waterfront Jeddah",
           "Jeddah Hilton",
           "The Venue Jeddah Corniche",
-          "InterContinental Jeddah",
+          "Sheraton Jeddah Hotel",
+          "Rosewood Jeddah",
           "Views Hotel & Residences",
-          "park hyatt jeddah"
+          "Radisson Blu Plaza Jeddah"
         ]
       },
       "Abu-Dhabi": {
         "hotels_list": [
+          "Beach Rotana All Suites",
+          "Khalidiya Palace Rayhaan by Rotana",
+          "Novotel Abu Dhabi Gate",
           "Zaya Nurai Island Resort",
-          "Al Raha Beach Hotel",
-          "Traders Hotel Qaryat Al Beri",
-          "Park Hyatt Abu Dhabi",
-          "Rixos Premium Saadiyat",
-          "Grand Hyatt Abu Dhabi",
-          "Royal M Hotel Abu Dhabi",
-          "Anantara Eastern Mangroves",
-          "Khalidiya Palace Rayhaan",
-          "Radisson Blu Yas Island"
+          "Bab Al Qasr Hotel",
+          "Bab Al Qasr Residence",
+          "Traders Hotel Qaryat Al Beri Abu Dhabi, by Shangri-la",
+          "Al Seef Resort & Spa by Andalus",
+          "Grand Millennium Al Wahda",
+          "Centro Capital Centre By Rotana"
         ]
       },
       "Dammam": {
         "hotels_list": [
-          "Boudl Shatea dammam",
-          "Golden Tulip Dammam",
-          "novotel Dammam",
+          "Golden Tulip Dammam Corniche Hotel",
           "Wyndham Garden Dammam",
-          "Dammam Palace Hotel",
-          "Tulip Inn Suites  Dammam",
-          "Swiss International Dammam",
-          "Carlton Moaibed Dammam",
-          "lavona  dammam",
-          "Ramada by Wyndham Dammam"
+          "Novotel Dammam Business Park",
+          "Boudl Al Shatea",
+          "Braira Dammam Hotel",
+          "Naviti Warwick Dammam",
+          "Ramada Hotel & Suites",
+          "Sheraton Dammam Hotel & Convention Centre",
+          "Carlton Al Moaibed Hotel",
+          "Boudl Corniche"
         ]
       },
       "Ras-Al-Khamiah": {
         "hotels_list": [
-          "Cove Rotana",
-          "Jannah Resort",
+          "Rixos Bab Al Bahr - All Inclusive",
+          "Hilton Ras Al Khaimah Resort & Spa",
+          "The Ritz-Carlton Ras Al Khaimah, Al Wadi Desert",
+          "Marjan Island Resort & Spa Managed by AccorHotels",
+          "Waldorf Astoria Ras Al Khaimah",
+          "City Stay Beach Hotel Apartments",
           "BM Beach Resort",
-          "DoubleTree by Hilton Resort ras al",
-          "Rixos Bab",
-          "Hilton Ras Al Khaimah",
-          "Ritz Carlton Al Wadi Desert",
-          "Marjan Island Resort Accor",
-          "Ritz Carlton Al Hamra Beach",
-          "BM Beach Hotel"
+          "Hilton Garden Inn Ras Al Khaimah",
+          "BM Beach Resort",
+          "The Cove Rotana Resort"
         ]
       },
       "Makkah": {
         "hotels_list": [
+          "Hotel Pullman ZamZam Makkah",
           "Holiday Inn Makkah Al Aziziah",
-          "Jabal Omar Hyat",
-          "Makkah Clock Royal",
-          "Reef Hotel makkah",
-          "Reefaf Al Mashaer makkah",
-          "Makkah Towers",
-          "Four Points Sheraton Makkah",
-          "Intercontinental Makkah",
-          "Pullman ZamZam Makkah",
-          "Raffles Makkah"
+          "Sheraton Makkah Jabal Al Kaaba Hotel",
+          "Al Marwa Rayhaan by Rotana",
+          "Raffles Makkah Palace",
+          "Makkah Clock Royal Tower - A Fairmont Hotel",
+          "Jabal Omar Hyatt Regency Makkah",
+          "Al Safwah Royale Orchid",
+          "Four Points by Sheraton Makkah Al Naseem",
+          "Swissotel Makkah"
         ]
       },
       "Al-Madinah": {
         "hotels_list": [
-          "Taiba Arac",
-          "Anwar Al Madinah",
-          "Madinah Mvenpick Hotel",
-          "Dar Al Taqwa",
-          "Dar Al Hijra InterContinental",
-          "Dar Al Iman Intercontinental",
+          "Coral Al Madinah Hotel",
+          "Anwar Al Madinah Movenpick Hotel",
+          "Crowne Plaza Madinah",
           "Millennium Al Aqeeq Hotel",
-          "Rua Al Madinah",
-          "rotana al mesk"
+          "Taiba Arac Suites",
+          "Leader Al Muna Karim",
+          "Madinah Hilton",
+          "Pullman Zamzam Madina",
+          "Madinah M√∂venpick Hotel",
+          "Dar Al Taqwa Hotel"
         ]
       },
       "Abha": {
         "hotels_list": [
+          "OYO 369 Arwa Alqosor",
           "Boudl Abha",
-          "Shafa Abha Hotel",
+          "Azd Hotel",
+          "OYO 467 Al Dahya Hotel",
+          "Msharef Al Moden Suites",
+          "AlMuhaidb Residence Abha",
           "Abha Palace",
-          "La Fontaine ronas Abha",
-          "Beautat Hotel",
-          "La Fontaine Sarat Abha",
-          "tanuma aram",
-          "Al Muhaidb abha",
-          "Al Dahya abha",
-          "rose plaza abha"
+          "Shafa Abha Hotel",
+          "La Fontaine Ronas Abha Suites",
+          "Intercontinental Abha"
         ]
       },
       "Al-Khobar": {
         "hotels_list": [
-          "Golden Tulip Dana",
-          "Braira AL Azizya",
-          "Sofitel Al Khobar",
-          "Hilton Garden  Al Khobar",
-          "Movenpick Beach Al Khobar",
-          "Kempinski  Al Khobar",
-          "Al Rashid al khobar",
-          "Staybridge Al Khobar",
-          "Aswar  Suites Al olya",
-          "Le Meridien Al Khobar"
+          "Mercure Al Khobar Hotel",
+          "Golden Tulip Dana Bay Resort",
+          "Hilton Garden Inn Al Khobar",
+          "Sofitel Al Khobar The Corniche",
+          "Movenpick Beach Resort Al Khobar",
+          "Kempinski Al Othman Hotel Al Khobar",
+          "Normas Hotel",
+          "Staybridge Suites Al Khobar",
+          "Intercontinental Al Khobar",
+          "Holiday Inn Al Khobar - Corniche"
         ]
       }
     }

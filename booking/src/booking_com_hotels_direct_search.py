@@ -1,3 +1,5 @@
+import time
+
 from appium import webdriver
 from datetime import date,datetime
 from time import sleep
@@ -103,7 +105,7 @@ class BookingHotels:
                         self.driver.swipe(start_x=580, start_y=800, end_x=580, end_y=300)
                         self.short_sleep()
                         self.driver.find_element_by_xpath(
-                            '//android.view.View[@content-desc="{}"]'.format(self.checkin_date)).click()
+                            '//android.view.View[@content-desc="{}"]'.format(self.checkout_date)).click()
 
 
                     self.waitForElementPopUp(actions.get('calender_confirm'), 'id')
@@ -164,6 +166,8 @@ class BookingHotels:
                 #print(actions.get('navigate_up'))
                # hotels_search_name.click()
                 self.short_sleep()
+                filename = parsed_hotel_name+"_"+time.strftime("%Y_%m_%d_%H%M%S")
+                self.driver.save_screenshot("/Users/mitesh.gala/PycharmProjects/applicationscraping/booking/screenshots/"+filename+".png")
                # self.waitForElementPopUp('//android.widget.ImageButton[@content-desc="‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‎‏‏‎‏‏‎‎‎‎‏‏‏‏‏‏‏‎‏‏‏‏‏‎‏‎‎‏‏‎‏‎‎‎‎‎‏‏‏‎‏‎‎‎‎‎‏‏‎‏‏‎‎‏‎‏‎‏‏‏‏‏‎‎Navigate up‎‏‎‎‏‎"]', 'xpath')
                 #self.driver.find_element_by_xpath('//android.widget.ImageButton[@content-desc="‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‎‏‏‎‏‏‎‎‎‎‏‏‏‏‏‏‏‎‏‏‏‏‏‎‏‎‎‏‏‎‏‎‎‎‎‎‏‏‏‎‏‎‎‎‎‎‏‏‎‏‏‎‎‏‎‏‎‏‏‏‏‏‎‎Navigate up‎‏‎‎‏‎"]').click()
                 self.waitForElementPopUp('//android.widget.ImageButton[@content-desc="Navigate up"]', 'xpath')
@@ -180,45 +184,40 @@ class BookingHotels:
             return extracted_data
 
 if __name__ == '__main__':
-    proxy_address = 'ae-pr.oxylabs.io:40000'
-    booking_app=BookingHotels()
-    #print(booking_app.createDesiredCapabilty())
-    with open('booking_hotels_properties','r') as json_file:
-        data=json.load(json_file)
-    proxy=Proxy()
-    proxy.proxyType=ProxyType.MANUAL
-    proxy.http_proxy=proxy_address
-    proxy.ssl_proxy=proxy_address
-    proxy.socks_proxy=proxy_address
-    proxy.socksUsername='rseera'
-    proxy.socks_password='5N59qdZSSr'
-    desired_capabilities = booking_app.createDesiredCapabilty()
-    proxy.add_to_capabilities(desired_capabilities)
-    app_start_time=datetime.now()
-    print("the start time is {}".format(str(app_start_time)))
-    booking_app.driver = webdriver.Remote(command_executor=data.get('appium').get('server_details'),desired_capabilities=desired_capabilities,proxy=proxy)
-    utils=Utils()
-    dates=utils.getBookingComHotelSearchDates()
-    booking_app.checkin_date=dates[0]
-    booking_app.checkout_date=dates[1]
-    print("the checking and checkout dates are dates are {} and {}".format(dates[0],dates[1]))
-    hotels_metadata = {'city': 'Dubai'}
-    action_elements=data.get('details').get('elements')
-    log_file_path=data.get('logging').get('log_file_path')
-    logger=utils.getlogger(logging.INFO,log_file_path,'hotel_data_scrap.info')
-    hotels_list=data.get('city').get(hotels_metadata.get('city')).get('hotels_list')
-    logger.info('Starting')
-    logger.info('the list is {}'.format(hotels_list))
-    #sleep(10)
-    print(hotels_list)
-    scrapped_data=booking_app.extract_hotels(hotels_metadata,utils,action_elements,hotels_list,logger)
-    #filename=utils.writeToFile(scrapped_data,data.get('output_location'),'booking')
-    #utils.saveToS3(filename,hotels_metadata.get('city'))
-    logger.info(scrapped_data)
-    app_end_time=datetime.now()
-    print("the end time is {}".format(str(app_end_time)))
-    print("timetaken is {}".format(str(app_end_time-app_start_time)))
-    logger.info('timetaken is {}'.format(str(app_end_time-app_start_time)))
+    hotel_city=["Al-Khobar"]
+    for city in hotel_city:
+        hotels_metadata = {'city': city}
+        booking_app=BookingHotels()
+        with open('booking_hotels_properties','r') as json_file:
+            data=json.load(json_file)
+        desired_capabilities = booking_app.createDesiredCapabilty()
+        app_start_time=datetime.now()
+        print("the start time is {}".format(str(app_start_time)))
+        booking_app.driver = webdriver.Remote(command_executor=data.get('appium').get('server_details'),desired_capabilities=desired_capabilities)
+        utils=Utils()
+        dates=utils.getBookingComHotelSearchDates()
+        booking_app.checkin_date=dates[0]
+        booking_app.checkout_date=dates[1]
+        print("the checking and checkout dates are dates are {} and {}".format(dates[0],dates[1]))
+
+
+
+        action_elements=data.get('details').get('elements')
+        log_file_path=data.get('logging').get('log_file_path')
+        logger=utils.getlogger(logging.INFO,log_file_path,'hotel_data_scrap.info')
+        hotels_list=data.get('city').get(hotels_metadata.get('city')).get('hotels_list')
+        logger.info('Starting')
+        logger.info('the list is {}'.format(hotels_list))
+        print(hotels_list)
+        scrapped_data=booking_app.extract_hotels(hotels_metadata,utils,action_elements,hotels_list,logger)
+        filename=utils.writeToFile(scrapped_data,data.get('output_location'),'booking')
+        utils.saveToS3(filename,hotels_metadata.get('city'))
+        app_end_time=datetime.now()
+        print("the end time is {}".format(str(app_end_time)))
+        print("timetaken is {}".format(str(app_end_time-app_start_time)))
+        logger.info('timetaken is {}'.format(str(app_end_time-app_start_time)))
+        #logger.info("sleeping for while")
+        #sleep(120)
 
 
    # booking_app.driver.get_window_size()
