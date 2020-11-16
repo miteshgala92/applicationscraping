@@ -3,7 +3,7 @@ from appium import webdriver
 from appium.webdriver.common.touch_action import TouchAction
 from flyin.src import flyin_calender as cal
 
-hotel_names = ['Kempinski Hotel Mall of the Emirates']
+
 appwaitactivity = "com.flyin.bookings.activities.SplashScreenActivity"
 
 
@@ -16,6 +16,39 @@ desired_capability = {
     "appWaitActivity": appwaitactivity,
     "noReset": "True"
 }
+
+
+def swipecalender(num_of_weeks,monthlywidget:dict,y2):
+    x = (monthlywidget.get('x') + monthlywidget.get('width')) / 2
+    for i in range(0,num_of_weeks+1):
+        print("swipe")
+        #x = 99
+        #y1 = monthlywidget.get('y')
+        y1 = 1000
+        #print(y1)
+        #y2 = monthlywidget.get('y') + monthlywidget.get('height')
+        y2 = y2
+        #print(y2)
+        #TouchAction(driver).press(x=x, y=y2).move_to(x=x, y=y1).release().perform()
+        driver.swipe(start_x=x, start_y=y2, end_x=x, end_y=y1)
+    time.sleep(3)
+
+def swipecalender1(num_of_weeks, y1):
+    x = 500
+    print(y1)
+    y1 = y1 + 175
+    y2 = 1269
+    if num_of_weeks == 5:
+        y2 = y2 - 112
+    elif num_of_weeks == 4:
+        y2 = y2 - 224
+    else:
+        y2 = y2
+    print(y2)
+
+    #TouchAction(driver).press(x=x, y=y2).move_to(x=x, y=y1).release().perform()
+    #TouchAction(driver).press(x=513, y=1283).move_to(x=508, y=1000).wait(3000).release().perform()
+    driver.swipe(start_x=x, start_y=y2, end_x=x, end_y=y1)
 
 
 driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_capability)
@@ -45,12 +78,31 @@ driver.find_element_by_xpath('//*[@resource-id="com.flyin.bookings:id/txt_countr
 # Date Selection
 driver.find_element_by_id('com.flyin.bookings:id/tv_return_date_one').click()
 monthlywidget = driver.find_element_by_xpath('//androidx.recyclerview.widget.RecyclerView/android.view.View[1]').rect
-cal_date = cal.Onward(3)
+#print(monthlywidget)
+cal_date = cal.Onward(104)
+print(cal_date)
+number_of_swipes=cal.calenderswipe(cal_date)
+print(number_of_swipes)
+#calenderwidget = driver.find_element_by_id('com.flyin.bookings:id/day_picker').rect
+temp = 0
+for num_of_weeks in number_of_swipes:
+    monthlywidget = driver.find_element_by_xpath('//androidx.recyclerview.widget.RecyclerView/android.view.View[1]').rect
+    y2 = 1130 + temp
+    swipecalender(num_of_weeks,monthlywidget,y2)
+    temp = temp + 1
+temp = 0
+monthlywidget = driver.find_element_by_xpath('//androidx.recyclerview.widget.RecyclerView/android.view.View[1]').rect
+#print(monthlywidget)
 number_of_week_checkin = cal.number_of_weeks(cal_date)
+#print(number_of_week_checkin)
 weeknum_checkindate = cal.weeknumber(cal_date)
+#print(weeknum_checkindate)
 weekday_checkindate = cal.weekday(cal_date)
+#print(weekday_checkindate)
 x_cord_checkin = cal.x_cord(monthlywidget['x'],monthlywidget['width'],weekday_checkindate)
+#print(x_cord_checkin)
 y_cord_checkin = cal.y_cord(monthlywidget['y'],monthlywidget['height'],weeknum_checkindate,number_of_week_checkin)
+#print(y_cord_checkin)
 TouchAction(driver).tap(None, x_cord_checkin, y_cord_checkin, 1).perform()
 driver.find_element_by_id('com.flyin.bookings:id/done_button').click()
 

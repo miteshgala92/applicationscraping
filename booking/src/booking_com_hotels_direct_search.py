@@ -166,8 +166,8 @@ class BookingHotels:
                 #print(actions.get('navigate_up'))
                # hotels_search_name.click()
                 self.short_sleep()
-                filename = parsed_hotel_name+"_"+time.strftime("%Y_%m_%d_%H%M%S")
-                self.driver.save_screenshot("/Users/mitesh.gala/PycharmProjects/applicationscraping/booking/screenshots/"+filename+".png")
+                #filename = parsed_hotel_name+"_"+time.strftime("%Y_%m_%d_%H%M%S")
+                #self.driver.save_screenshot("/Users/mitesh.gala/PycharmProjects/applicationscraping/booking/screenshots/"+filename+".png")
                # self.waitForElementPopUp('//android.widget.ImageButton[@content-desc="‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‎‏‏‎‏‏‎‎‎‎‏‏‏‏‏‏‏‎‏‏‏‏‏‎‏‎‎‏‏‎‏‎‎‎‎‎‏‏‏‎‏‎‎‎‎‎‏‏‎‏‏‎‎‏‎‏‎‏‏‏‏‏‎‎Navigate up‎‏‎‎‏‎"]', 'xpath')
                 #self.driver.find_element_by_xpath('//android.widget.ImageButton[@content-desc="‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‎‏‏‏‏‏‎‏‏‎‏‏‎‎‎‎‏‏‏‏‏‏‏‎‏‏‏‏‏‎‏‎‎‏‏‎‏‎‎‎‎‎‏‏‏‎‏‎‎‎‎‎‏‏‎‏‏‎‎‏‎‏‎‏‏‏‏‏‎‎Navigate up‎‏‎‎‏‎"]').click()
                 self.waitForElementPopUp('//android.widget.ImageButton[@content-desc="Navigate up"]', 'xpath')
@@ -184,7 +184,7 @@ class BookingHotels:
             return extracted_data
 
 if __name__ == '__main__':
-    hotel_city=["Al-Khobar"]
+    hotel_city=["Dubai","Sharjah","Riyadh","Jeddah","Abu-Dhabi","Dammam","Ras-Al-Khamiah","Makkah","Al-Madinah","Abha","Al-Khobar"]
     for city in hotel_city:
         hotels_metadata = {'city': city}
         booking_app=BookingHotels()

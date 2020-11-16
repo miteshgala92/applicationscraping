@@ -25,7 +25,7 @@ def calenderswipe(checkindate):
     onemonthlater = today
     numofweekspermonth = []
     while i <= num_months:
-        cal = calendar.TextCalendar(calendar.SUNDAY).formatmonth(currentyear, currentmonth)
+        cal = calendar.TextCalendar(calendar.MONDAY).formatmonth(currentyear, currentmonth)
         numberofweeks = len(cal.split('\n')) - 3
         numofweekspermonth.append(numberofweeks)
         onemonthlater = onemonthlater + monthdelta.monthdelta(1)
@@ -39,7 +39,7 @@ def weeknumber(date):
     day = str(date.day)
     month = date.month
     year = date.year
-    cal = calendar.TextCalendar(calendar.SUNDAY).formatmonth(year, month)
+    cal = calendar.TextCalendar(calendar.MONDAY).formatmonth(year, month)
     postString = cal.split("\n", 2)[2]
     week = postString.split('\n')
     weeknum = 0
@@ -56,7 +56,7 @@ def weeknumber(date):
 def number_of_weeks(date):
     month = date.month
     year = date.year
-    cal = calendar.TextCalendar(calendar.SUNDAY).formatmonth(year, month)
+    cal = calendar.TextCalendar(calendar.MONDAY).formatmonth(year, month)
     numberofweeks = len(cal.split('\n')) - 3
     return numberofweeks
 

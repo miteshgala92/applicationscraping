@@ -4,180 +4,31 @@
    "server_details": "http://localhost:4723/wd/hub"
   },
   "logging": {
-    "log_file_path": "/Users/mitesh.gala/PycharmProjects/applicationscraping/booking/logs/"
+    "log_file_path": "/Users/mitesh.gala/PycharmProjects/applicationscraping/flyin/logs/"
   },
-  "output_location": "/Users/mitesh.gala/PycharmProjects/applicationscraping/booking/target/",
-  "screenshots": "/Users/mitesh.gala/PycharmProjects/applicationscraping/booking/screenshots/",
+  "output_location": "/Users/mitesh.gala/PycharmProjects/applicationscraping/flyin/target/",
+  "screenshots": "/Users/mitesh.gala/PycharmProjects/applicationscraping/flyin/screenshots/",
   "details": {
     "elements": {
-      "search_form": "com.booking:id/search_details_text",
-      "search_city_text_box": "com.booking:id/disambiguation_search_edittext",
-      "select_city": "com.booking:id/disam_list_name",
-      "select_dates": "com.booking:id/search_details_dates_text",
-      "calender_confirm": "com.booking:id/calendar_confirm",
-      "search_button": "com.booking:id/search_search",
-      "hotel_names": "com.booking:id/sr_hotel_card_hotel_name",
-      "select_hotel_name": "com.booking:id/hotel_action_select",
-      "room_title": "com.booking:id/rooms_item_title",
-      "view_price": "com.booking:id/price_view_price",
-      "tax_and_charges": "com.booking:id/price_view_taxes_and_charges",
-      "navigate_up": "//android.widget.ImageButton[@content-desc=\"Navigate up\"]",
-      "room_type": "com.booking:id/room_type",
-      "inner_icon": "com.booking:id/listitem_info_icon",
-      "reserve_button": "com.booking:id/action_button",
-      "main_page_room_type": "com.booking:id/price_view_room_details"
-    }},
-    "city": {
-      "Dubai": {
-        "hotels_list": [
-          "Anantara The Palm Dubai",
-          "Atlantis The Palm, Dubai",
-          "Address Dubai Mall",
-          "Rixos Premium Dubai JBR",
-          "Address Boulevar",
-          "Nikki Beach Resort & Spa Dubai",
-          "Kempinski Hotel Mall of Emirates",
-          "Sheraton Mall of the Emirates Hotel Dubai",
-          "Bulgari Resort Dubai",
-          "JA Hatta Fort Hotel"
-        ]
-      },
-      "Sharjah": {
-        "hotels_list": ["Marbella Resort",
-          "OYO 122 Crystal Plaza Hotel",
-          "Copthorne Hotel Sharjah",
-          "Al Badayer Retreat",
-          "Sheraton Sharjah",
-          "Golden Sands Hotel Sharjah",
-          "Al Maha Regency",
-          "Holiday International Sharjah",
-          "lou lou beach resort",
-          "aldar hotel sharjah"
-        ]
-      },
-      "Riyadh": {
-        "hotels_list":["Durrat Al Riyadh Resort",
-          "Hyatt Regency Riyadh Olaya",
-          "Burj Rafal Riyadh",
-          "Novotel Suites Riyadh Dyar",
-          "Ascott Rafal Olaya Riyadh",
-          "Novotel Riyadh Al Anoud",
-          "Hilton Riyadh Hotel & Residences",
-          "Tulip Inn Riyadh",
-          "Narcissus Hotel & Residence Riyadh",
-          "Vivienda Hotel Villas"
-          ]
-      },
-      "Jeddah": {
-        "hotels_list": [
-          "Rosewood Jeddah",
-          "Movenpick Al Nawras Jeddah",
-          "Narcissus Resort & spa Obhur Jeddah",
-          "Makarem Annakheel Hotel & Resort",
-          "Movenpick Hotel Jeddah",
-          "Jeddah Hilton",
-          "The Venue Jeddah Corniche",
-          "InterContinental Jeddah",
-          "Views Hotel & Residences",
-          "park hyatt jeddah"
-        ]
-      },
-      "Abu-Dhabi": {
-        "hotels_list": [
-          "Zaya Nurai Island Resort",
-          "Al Raha Beach Hotel",
-          "Traders Hotel Qaryat Al Beri",
-          "Park Hyatt Abu Dhabi",
-          "Rixos Premium Saadiyat",
-          "Grand Hyatt Abu Dhabi",
-          "Royal M Hotel Abu Dhabi",
-          "Anantara Eastern Mangroves",
-          "Khalidiya Palace Rayhaan",
-          "Radisson Blu Yas Island"
-        ]
-      },
-      "Dammam": {
-        "hotels_list": [
-          "Boudl Shatea dammam",
-          "Golden Tulip Dammam",
-          "novotel Dammam",
-          "Wyndham Garden Dammam",
-          "Dammam Palace Hotel",
-          "Tulip Inn Suites  Dammam",
-          "Swiss International Dammam",
-          "Carlton Moaibed Dammam",
-          "lavona  dammam",
-          "Ramada by Wyndham Dammam"
-        ]
-      },
-      "Ras-Al-Khamiah": {
-        "hotels_list": [
-          "Cove Rotana",
-          "Jannah Resort",
-          "BM Beach Resort",
-          "DoubleTree by Hilton Resort ras al",
-          "Rixos Bab",
-          "Hilton Ras Al Khaimah",
-          "Ritz Carlton Al Wadi Desert",
-          "Marjan Island Resort Accor",
-          "Ritz Carlton Al Hamra Beach",
-          "BM Beach Hotel"
-        ]
-      },
-      "Makkah": {
-        "hotels_list": [
-          "Holiday Inn Makkah Al Aziziah",
-          "Jabal Omar Hyat",
-          "Makkah Clock Royal",
-          "Reef Hotel makkah",
-          "Reefaf Al Mashaer makkah",
-          "Makkah Towers",
-          "Four Points Sheraton Makkah",
-          "Intercontinental Makkah",
-          "Pullman ZamZam Makkah",
-          "Raffles Makkah"
-        ]
-      },
-      "Al-Madinah": {
-        "hotels_list": [
-          "Taiba Arac",
-          "Anwar Al Madinah",
-          "Madinah Mvenpick Hotel",
-          "Dar Al Taqwa",
-          "Dar Al Hijra InterContinental",
-          "Dar Al Iman Intercontinental",
-          "Millennium Al Aqeeq Hotel",
-          "Rua Al Madinah",
-          "rotana al mesk"
-        ]
-      },
-      "Abha": {
-        "hotels_list": [
-          "Boudl Abha",
-          "Shafa Abha Hotel",
-          "Abha Palace",
-          "La Fontaine ronas Abha",
-          "Beautat Hotel",
-          "La Fontaine Sarat Abha",
-          "tanuma aram",
-          "Al Muhaidb abha",
-          "Al Dahya abha",
-          "rose plaza abha"
-        ]
-      },
-      "Al-Khobar": {
-        "hotels_list": [
-          "Golden Tulip Dana",
-          "Braira AL Azizya",
-          "Sofitel Al Khobar",
-          "Hilton Garden  Al Khobar",
-          "Movenpick Beach Al Khobar",
-          "Kempinski  Al Khobar",
-          "Al Rashid al khobar",
-          "Staybridge Al Khobar",
-          "Aswar  Suites Al olya",
-          "Le Meridien Al Khobar"
-        ]
-      }
-    }
+      "select_flight_option": "com.flyin.bookings:id/rl_img_flight",
+      "one_way_toggle": "com.flyin.bookings:id/txt_oneway",
+      "departure": "com.flyin.bookings:id/linear_departure",
+      "destination": "com.flyin.bookings:id/linear_destination",
+      "search_box": "com.flyin.bookings:id/et_search",
+      "country_code": "com.flyin.bookings:id/txt_countrycode",
+      "travel_dates": "com.flyin.bookings:id/tv_return_date_one",
+      "monthly_widget": "//androidx.recyclerview.widget.RecyclerView/android.view.View[1]",
+      "calender_done_button": "com.flyin.bookings:id/done_button",
+      "non_stop": "com.flyin.bookings:id/non_stop",
+      "search_button": "com.flyin.bookings:id/btn_flightsearch",
+      "select_airways": "com.flyin.bookings:id/airways_name",
+      "continue_button": "com.flyin.bookings:id/btn_return_flights",
+      "review_trip":"com.flyin.bookings:id/toolbar_title",
+      "airline_code":"com.flyin.bookings:id/airline_code",
+      "base_price": "com.flyin.bookings:id/passenger_price",
+      "taxes_and_fees": "com.flyin.bookings:id/tax_price",
+      "other_fees": "com.flyin.bookings:id/service_price",
+      "vat": "com.flyin.bookings:id/vat_price",
+      "total_price": "com.flyin.bookings:id/total_price"
+    }}
 }
