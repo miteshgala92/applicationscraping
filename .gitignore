@@ -134,5 +134,5 @@ dmypy.json
 
 
 #Credential files
-src/credentials.josn
-src/token.pickle
+credentials.josn
+token.pickle
