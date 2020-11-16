@@ -75,6 +75,7 @@ docs/_build/
 target/
 logs/
 screenshots/
+credentials/
 
 # Jupyter Notebook
 .ipynb_checkpoints
