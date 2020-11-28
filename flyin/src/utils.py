@@ -18,8 +18,8 @@ class Utils:
         else:
             return (str((date.today()+timedelta(onwards_days)).day),str((date.today()+timedelta(return_days)).day))
 
-    def saveToS3(self,filepath,journey_type):
-        key_name='flyin'+'_{}'.format(journey_type)+'_'+str(date.today())
+    def saveToS3(self,filepath):
+        key_name='flyin'+'_'+str(date.today())
         client=boto3.client('s3',
                             aws_access_key_id=os.environ.get('AWS_ACCESS_KEY_ID'),
                             aws_secret_access_key=os.environ.get('AWS_SECRET_ACCESS_KEY')

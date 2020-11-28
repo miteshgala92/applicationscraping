@@ -24,6 +24,8 @@
       "select_airways": "com.flyin.bookings:id/airways_name",
       "continue_button": "com.flyin.bookings:id/btn_return_flights",
       "review_trip":"com.flyin.bookings:id/toolbar_title",
+      "img_onward":"com.flyin.bookings:id/img_onward",
+      "img_return_flight":"com.flyin.bookings:id/img_return_flight",
       "airline_code":"com.flyin.bookings:id/airline_code",
       "base_price": "com.flyin.bookings:id/passenger_price",
       "taxes_and_fees": "com.flyin.bookings:id/tax_price",

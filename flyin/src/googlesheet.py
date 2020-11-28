@@ -10,7 +10,7 @@ SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 
 # The ID and range of a sample spreadsheet.
 SAMPLE_SPREADSHEET_ID = '1PFGCxQukL84EOlOkvdncQaOTmzluDm9DjOR8nwpBp8A'
-SAMPLE_RANGE_NAME = 'Flyin_Flights!A1:I'
+SAMPLE_RANGE_NAME = 'Flyin_Flights!A1:K'
 
 def routes_data():
     """Shows basic usage of the Sheets API.
