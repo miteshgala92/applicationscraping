@@ -79,7 +79,7 @@ driver.find_element_by_xpath('//*[@resource-id="com.flyin.bookings:id/txt_countr
 driver.find_element_by_id('com.flyin.bookings:id/tv_return_date_one').click()
 monthlywidget = driver.find_element_by_xpath('//androidx.recyclerview.widget.RecyclerView/android.view.View[1]').rect
 #print(monthlywidget)
-cal_date = cal.Onward(104)
+cal_date = cal.Onward(55)
 print(cal_date)
 number_of_swipes=cal.calenderswipe(cal_date)
 print(number_of_swipes)

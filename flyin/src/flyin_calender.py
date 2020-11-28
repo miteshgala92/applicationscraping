@@ -90,15 +90,7 @@ def monthend(date):
     return False
 
 
-#departure_date = Onward(3)
+#departure_date = Onward(1)
 #print(departure_date)
-#b = Return(a,2)
+#b = Return(departure_date, 2)
 #print(b)
-#cs=calenderswipe(departure_date)
-#print(cs)
-#wn = weeknumber(departure_date)
-#print(wn)
-#wd = weekday(departure_date)
-#print(wd)
-#nof = number_of_weeks(departure_date)
-#print(nof)
