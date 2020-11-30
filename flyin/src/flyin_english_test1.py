@@ -107,6 +107,8 @@ print(departure_date)
 #print(return_date)
 swipecalender2(departure_date)
 
+abc = driver.find_element_by_id('com.flyin.bookings:id/non_stop').is_displayed()
+print(abc)
 
 # Non Stop Flight
 driver.find_element_by_id('com.flyin.bookings:id/non_stop').click()

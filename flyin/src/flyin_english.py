@@ -267,6 +267,7 @@ class Flyinflights:
                     self.waitForElementPopUp(actions.get('airline_code'), 'id')
                     airline_code = self.driver.find_element_by_id(actions.get('airline_code')).get_attribute('text')
                     airline_code = re.sub(r"[()]", "", airline_code)
+                    airline_code = re.sub(r"[ ]", "", airline_code)
                 except Exception as e:
                     logger.error('Airline Code not found')
                     logger.error(e)
@@ -410,9 +411,11 @@ class Flyinflights:
             try:
                 self.waitForElementPopUp(actions.get('departure'), 'id')
                 self.driver.find_element_by_id(actions.get('departure')).click()
+                self.waitForElementPopUp(actions.get('search_box'), 'id')
                 enter_departure = self.driver.find_element_by_id(actions.get('search_box'))
                 enter_departure.send_keys(origin_code)
                 self.driver.execute_script('mobile: performEditorAction', {'action': 'search'})
+                self.waitForElementPopUp("//*[@resource-id='" + actions.get('country_code') + "' and @text='" + origin_code + "']", 'xpath')
                 self.driver.find_element_by_xpath(
                     "//*[@resource-id='" + actions.get('country_code') + "' and @text='" + origin_code + "']").click()
             except Exception as e:
@@ -422,9 +425,12 @@ class Flyinflights:
             try:
                 self.waitForElementPopUp(actions.get('destination'), 'id')
                 self.driver.find_element_by_id(actions.get('destination')).click()
+                self.waitForElementPopUp(actions.get('search_box'), 'id')
                 enter_destination = self.driver.find_element_by_id(actions.get('search_box'))
                 enter_destination.send_keys(destination_code)
                 self.driver.execute_script('mobile: performEditorAction', {'action': 'search'})
+                self.waitForElementPopUp("//*[@resource-id='" + actions.get(
+                    'country_code') + "' and @text='" + destination_code + "']", 'xpath')
                 self.driver.find_element_by_xpath("//*[@resource-id='" + actions.get(
                     'country_code') + "' and @text='" + destination_code + "']").click()
             except Exception as e:
@@ -587,6 +593,7 @@ class Flyinflights:
                     self.waitForElementPopUp(actions.get('img_onward'), 'id')
                     airline_code_departure = self.driver.find_element_by_id(actions.get('airline_code')).get_attribute('text')
                     airline_code_departure = re.sub(r"[()]", "", airline_code_departure)
+                    airline_code_departure = re.sub(r"[ ]", "", airline_code_departure)
                 except Exception as e:
                     logger.error('Airline Code not found')
                     logger.error(e)
@@ -599,6 +606,7 @@ class Flyinflights:
                     self.driver.find_element_by_id(actions.get('img_return_flight')).click()
                     airline_code_return = self.driver.find_element_by_id(actions.get('airline_code')).get_attribute('text')
                     airline_code_return = re.sub(r"[()]", "", airline_code_return)
+                    airline_code_return = re.sub(r"[ ]", "", airline_code_return)
                 except Exception as e:
                     logger.error('Airline Code not found')
                     logger.error(e)
@@ -694,8 +702,17 @@ class Flyinflights:
                 self.waitForElementPopUp('//android.widget.ImageButton[@content-desc="Navigate up"]', 'xpath')
                 self.driver.find_element_by_xpath('//android.widget.ImageButton[@content-desc="Navigate up"]').click()
 
-                self.waitForElementPopUp('com.flyin.bookings:id/close', 'id')
-                self.driver.find_element_by_id('com.flyin.bookings:id/close').click()
+                try:
+                    self.waitForElementPopUp('com.flyin.bookings:id/close', 'id')
+                    self.driver.find_element_by_id('com.flyin.bookings:id/close').click()
+                except Exception as e:
+                    logger.error('Cancel button  not found')
+                    logger.info(traceback.print_exc())
+
+                #if close_img:
+                #    print(close_img)
+                #    self.driver.find_element_by_id('com.flyin.bookings:id/close').click()
+
 
                 self.waitForElementPopUp('//android.widget.ImageButton[@content-desc="Navigate up"]', 'xpath')
                 self.driver.find_element_by_xpath('//android.widget.ImageButton[@content-desc="Navigate up"]').click()
@@ -801,8 +818,8 @@ if __name__ == '__main__':
     flyin_data.extend(return_flights)
     print("Final Flyin Data")
     print(flyin_data)
-    # filename = utils.writeToFile(oneway_flights, data.get('output_location'), 'flyin')
-    # utils.saveToS3(filename,journey_type)
+    #filename = utils.writeToFile(flyin_data, data.get('output_location'), 'flyin')
+    #utils.saveToS3(filename)
     app_end_time = datetime.now()
     print("the end time is {}".format(str(app_end_time)))
     print("timetaken is {}".format(str(app_end_time - app_start_time)))
