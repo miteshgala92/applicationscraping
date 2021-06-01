@@ -20,7 +20,7 @@ class Utils:
             return (str((date.today() + timedelta(onwards_days)).day), str((date.today() + timedelta(return_days)).day))
 
     def saveToS3(self, filepath):
-        key_name = 'flyin' + '_' + str(date.today())
+        key_name = 'wego' + '_' + str(date.today())
         client = boto3.client('s3',
                               aws_access_key_id=os.environ.get('AWS_ACCESS_KEY_ID'),
                               aws_secret_access_key=os.environ.get('AWS_SECRET_ACCESS_KEY')
@@ -45,7 +45,7 @@ class Utils:
         print(folder_path)
         data = []
         for filename in os.listdir(folder_path):
-            if filename.startswith('flyin'):
+            if filename.startswith('wego'):
                 continue
             with open(os.path.join(folder_path, filename)) as infile:
                 data.extend(json.load(infile))

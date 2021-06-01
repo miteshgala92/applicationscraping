@@ -1,7 +1,7 @@
 import re
 import sys
 from appium import webdriver
-from datetime import date, datetime
+from datetime import date, datetime, time
 from time import sleep
 from appium.webdriver.common.touch_action import TouchAction
 import traceback
@@ -121,7 +121,7 @@ class Wegoflights:
     def flights_oneway_data(self, travel_type, origin_code, origin_city, origin_country, destination_code, destination_city, destination_country,
                             journey_type, departure_days, actions: dict, logger):
         global departure_date, extracted_data, no_of_booking_options
-        no_of_adults=[1,2]
+        no_of_adults=[1]
         try:
             extracted_data = []
             print(origin_city)
@@ -220,7 +220,7 @@ class Wegoflights:
                 try:
                     swipe_control = []
 
-                    while len(swipe_control) < 30:
+                    while len(swipe_control) < 3:
                         flight_rows = self.driver.find_elements_by_xpath(actions.get("row_flight_search_result_contents"))
                         #print(len(flight_rows))
                         #print(swipe_control)
@@ -298,6 +298,8 @@ class Wegoflights:
                                     seller_price = ''.join([str(elem) for elem in seller_price])
                                     # print(provider_name, seller_price)
                                     seller_rank += 1
+                                    filename = origin_code + "_" + destination_code + "_" + airline_name + "_" + str(seller_rank)
+                                    self.driver.save_screenshot("/Users/mitesh.gala/PycharmProjects/applicationscraping/wego/screenshots/" + filename + ".png")
                                     extracted_data_temp = {"source": "Wego",
                                                            "channel": "app",
                                                            "language": "EN",
