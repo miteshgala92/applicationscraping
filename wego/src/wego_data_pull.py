@@ -121,7 +121,7 @@ class Wegoflights:
     def flights_oneway_data(self, travel_type, origin_code, origin_city, origin_country, destination_code, destination_city, destination_country,
                             journey_type, departure_days, actions: dict, logger):
         global departure_date, extracted_data, no_of_booking_options
-        no_of_adults=[1]
+        no_of_adults=[1,2]
         try:
             extracted_data = []
             print(origin_city)
@@ -404,7 +404,7 @@ if __name__ == '__main__':
     wego_app.driver.quit()
 
     filename = utils.mergeFile(data.get('output_location'), 'wego')
-    # utils.saveToS3(filename)
+    utils.saveToS3(filename)
 
     app_end_time = datetime.now()
     print("the end time is {}".format(str(app_end_time)))
