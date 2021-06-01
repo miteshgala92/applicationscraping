@@ -29,6 +29,17 @@ def convert_string_to_list_of_tuples(days):
             temp = []
     return no_of_days
 
+def convert_string_to_list_of_tuples_for_airlines(days):
+    no_of_days = []
+    temp = []
+    for token in days.split(","):
+        num = token.replace("(", "").replace(")", "")
+        temp.append(num)
+        if ")" in token:
+            no_of_days.append(tuple(temp))
+            temp = []
+    return no_of_days
+
 
 class Flyinflights:
     def __init__(self):
@@ -82,23 +93,42 @@ class Flyinflights:
     def date_select(self, departure_date, return_date=None):
         # Go to current month
         number_of_swipes_departure = cal.calenderswipe(departure_date)
+        print("number of swipes")
+        print(number_of_swipes_departure)
         self.driver.press_keycode(61)
+        sleep(5)
 
         # Swipe to target month
         for swipe in number_of_swipes_departure:
             self.driver.press_keycode(61)
+            print(swipe)
+            sleep(5)
+
 
         if not number_of_swipes_departure:
             monthlywidget = self.driver.find_element_by_xpath(
                 '//androidx.recyclerview.widget.RecyclerView/android.view.View[1]').rect
+            print("monthlywidget if loop:")
+            print(monthlywidget)
         else:
             monthlywidget = self.driver.find_element_by_xpath(
                 '//androidx.recyclerview.widget.RecyclerView/android.view.View[last()]').rect
+            print(monthlywidget)
         number_of_week = cal.number_of_weeks(departure_date)
+        print("number_of_week: ")
+        print(number_of_week)
         weeknum = cal.weeknumber(departure_date)
+        print("weeknum: ")
+        print(weeknum)
         weekday = cal.weekday(departure_date)
+        print("weekday: ")
+        print(weekday)
         x_cord = cal.x_cord(monthlywidget['x'], monthlywidget['width'], weekday)
+        print("x_cord: ")
+        print(x_cord)
         y_cord = cal.y_cord(monthlywidget['y'], monthlywidget['height'], weeknum, number_of_week)
+        print("y_cord: ")
+        print(y_cord)
         TouchAction(self.driver).tap(None, x_cord, y_cord, 1).perform()
 
         if return_date is None:
@@ -109,31 +139,69 @@ class Flyinflights:
                 logger.info(traceback.print_exc())
         else:
             iCount = self.driver.find_elements_by_xpath('//androidx.recyclerview.widget.RecyclerView/android.view.View')
+            print("iCount: ")
+            print(iCount)
 
             current_date = datetime.today()
+            print("current date:")
+            print(current_date)
             todaymonth = current_date.month
+            print("todaymonth return: ")
+            print(todaymonth)
             departure_month = departure_date.month
+            print("departure_month return: ")
+            print(departure_month)
 
             if departure_month == todaymonth:
                 self.driver.press_keycode(61)
+                sleep(5)
+                print("if loop return")
             else:
+                print("else loop return")
                 for swipe in iCount:
+                    print("swipe return: ")
+                    print(swipe)
                     self.driver.press_keycode(61)
+                    sleep(5)
 
             # swiping for return month
             number_of_swipes_return = cal.calenderswipe(return_date)
+            print("number_of_swipes_return return: ")
+            print(number_of_swipes_return)
             return_swipe = len(number_of_swipes_return) - len(number_of_swipes_departure)
+            print("return_swipe return: ")
+            print(return_swipe)
 
             for swipe in range(0, return_swipe):
                 self.driver.press_keycode(61)
+                print("for loop swipe return")
+                sleep(5)
 
-            monthlywidget = self.driver.find_element_by_xpath(
+            if not number_of_swipes_return:
+                monthlywidget = self.driver.find_element_by_xpath(
+                    '//androidx.recyclerview.widget.RecyclerView/android.view.View[1]').rect
+                print("monthlywidget if loop:")
+                print(monthlywidget)
+            else:
+                monthlywidget = self.driver.find_element_by_xpath(
                 '//androidx.recyclerview.widget.RecyclerView/android.view.View[last()]').rect
+                print("monthlywidget else loop return: ")
+                print(monthlywidget)
             number_of_week = cal.number_of_weeks(return_date)
+            print("number_of_week return: ")
+            print(number_of_week)
             weeknum = cal.weeknumber(return_date)
+            print("weeknum return: ")
+            print(weeknum)
             weekday = cal.weekday(return_date)
+            print("weekday return: ")
+            print(weekday)
             x_cord = cal.x_cord(monthlywidget['x'], monthlywidget['width'], weekday)
+            print("x_cord return: ")
+            print(x_cord)
             y_cord = cal.y_cord(monthlywidget['y'], monthlywidget['height'], weeknum, number_of_week)
+            print("y_cord return: ")
+            print(y_cord)
             TouchAction(self.driver).tap(None, x_cord, y_cord, 1).perform()
             try:
                 self.driver.find_element_by_id('com.flyin.bookings:id/done_button').click()
@@ -211,10 +279,12 @@ class Flyinflights:
             for airline in airlines:
                 # Select Airlines
                 try:
-                    print(airline)
+                    print(airline[0])
+                    print(airline[1])
+
                     self.waitForElementPopUp("com.flyin.bookings:id/Fastest_layout", 'id')
                     self.driver.find_element_by_xpath("//android.widget.TextView[@resource-id='" + actions.get(
-                        'select_airways') + "' and @text='" + airline + "']").click()
+                        'select_airways') + "' and @text='" + airline[0] + "']").click()
                 except Exception as e:
                     logger.error('Airlines not found')
                     logger.info(traceback.print_exc())
@@ -234,7 +304,7 @@ class Flyinflights:
                         "destination_code": destination_code,
                         "origin_country": origin_country,
                         "destination_country": destination_country,
-                        "airline": airline,
+                        "airline": airline[1],
                         "departure_flight_number": "NA",
                         "return_flight_number": "NA",
                         "currency": "NA",
@@ -349,7 +419,7 @@ class Flyinflights:
                     "destination_code": destination_code,
                     "origin_country": origin_country,
                     "destination_country": destination_country,
-                    "airline": airline,
+                    "airline": airline[1],
                     "departure_flight_number": airline_code,
                     "return_flight_number": "NA",
                     "currency": "SAR",
@@ -360,7 +430,7 @@ class Flyinflights:
                     "total_price": total_price
                 })
 
-                print("Data has been captured for:" + airline)
+                print("Data has been captured for:" + airline[0])
 
                 # filename = parsed_hotel_name+"_"+time.strftime("%Y_%m_%d_%H%M%S")
                 # self.driver.save_screenshot("/Users/mitesh.gala/PycharmProjects/applicationscraping/booking/screenshots/"+filename+".png")
@@ -373,7 +443,7 @@ class Flyinflights:
                 self.waitForElementPopUp(
                     "//android.widget.TextView[@resource-id='" + actions.get('select_airways') + "']", 'xpath')
                 self.driver.find_element_by_xpath("//android.widget.TextView[@resource-id='" + actions.get(
-                    'select_airways') + "' and @text='" + airline + "']").click()
+                    'select_airways') + "' and @text='" + airline[0] + "']").click()
 
             # Go back to search page
             try:
@@ -400,6 +470,7 @@ class Flyinflights:
 
     def flights_return_data(self, travel_type, origin_code, origin_city, origin_country, destination_code, destination_city, destination_country,
                             journey_type, departure_days, return_days, actions: dict, airlines: list, logger):
+        global departure_date, return_date
         try:
             extracted_data = []
             print(origin_city)
@@ -476,7 +547,7 @@ class Flyinflights:
                     print(airline)
                     self.waitForElementPopUp("com.flyin.bookings:id/Fastest_layout", 'id')
                     self.driver.find_element_by_xpath("//android.widget.TextView[@resource-id='" + actions.get(
-                        'select_airways') + "' and @text='" + airline + "']").click()
+                        'select_airways') + "' and @text='" + airline[0] + "']").click()
                 except Exception as e:
                     logger.error('Airlines not found')
                     logger.info(traceback.print_exc())
@@ -496,7 +567,7 @@ class Flyinflights:
                         "destination_code": destination_code,
                         "origin_country": origin_country,
                         "destination_country": destination_country,
-                        "airline": airline,
+                        "airline": airline[1],
                         "departure_flight_number": "NA",
                         "return_flight_number": "NA",
                         "currency": "NA",
@@ -529,7 +600,7 @@ class Flyinflights:
                     print(airline)
                     self.waitForElementPopUp("com.flyin.bookings:id/Fastest_layout", 'id')
                     self.driver.find_element_by_xpath("//android.widget.TextView[@resource-id='" + actions.get(
-                        'select_airways') + "' and @text='" + airline + "']").click()
+                        'select_airways') + "' and @text='" + airline[0] + "']").click()
                 except Exception as e:
                     logger.error('Return airlines not found')
                     logger.info(traceback.print_exc())
@@ -549,7 +620,7 @@ class Flyinflights:
                         "destination_code": destination_code,
                         "origin_country": origin_country,
                         "destination_country": destination_country,
-                        "airline": airline,
+                        "airline": airline[1],
                         "departure_flight_number": "NA",
                         "return_flight_number": "NA",
                         "currency": "NA",
@@ -568,7 +639,7 @@ class Flyinflights:
                     self.waitForElementPopUp(
                         "//android.widget.TextView[@resource-id='" + actions.get('select_airways') + "']", 'xpath')
                     self.driver.find_element_by_xpath("//android.widget.TextView[@resource-id='" + actions.get(
-                        'select_airways') + "' and @text='" + airline + "']").click()
+                        'select_airways') + "' and @text='" + airline[0] + "']").click()
 
                     continue
 
@@ -682,7 +753,7 @@ class Flyinflights:
                     "destination_code": destination_code,
                     "origin_country": origin_country,
                     "destination_country": destination_country,
-                    "airline": airline,
+                    "airline": airline[1],
                     "departure_flight_number": airline_code_departure,
                     "return_flight_number": airline_code_return,
                     "currency": "SAR",
@@ -693,7 +764,7 @@ class Flyinflights:
                     "total_price": total_price
                 })
 
-                print("Data has been captured for:" + airline)
+                print("Data has been captured for:" + airline[0])
 
                 # filename = parsed_hotel_name+"_"+time.strftime("%Y_%m_%d_%H%M%S")
                 # self.driver.save_screenshot("/Users/mitesh.gala/PycharmProjects/applicationscraping/booking/screenshots/"+filename+".png")
@@ -721,7 +792,7 @@ class Flyinflights:
                 self.waitForElementPopUp(
                     "//android.widget.TextView[@resource-id='" + actions.get('select_airways') + "']", 'xpath')
                 self.driver.find_element_by_xpath("//android.widget.TextView[@resource-id='" + actions.get(
-                    'select_airways') + "' and @text='" + airline + "']").click()
+                    'select_airways') + "' and @text='" + airline[0] + "']").click()
 
             # Go back to search page
             try:
@@ -755,8 +826,8 @@ if __name__ == '__main__':
     routes_data = gs.routes_data()
 
     ##### Defining Initial Parameters #####
-    oneway_routes_data = routes_data.loc[(routes_data['Journey_Type'] == 'oneway')]
-    return_routes_data = routes_data.loc[(routes_data['Journey_Type'] == 'return')]
+    oneway_routes_data = routes_data.loc[(routes_data['Journey_Type'] == 'one_way')]
+    return_routes_data = routes_data.loc[(routes_data['Journey_Type'] == 'round_trip')]
     flyin_app = Flyinflights()
     utils = Utils()
     with open('flyin_flights_properties', 'r') as json_file:
@@ -777,7 +848,8 @@ if __name__ == '__main__':
     oneway_flights = []
     for index, row in oneway_routes_data.iterrows():
         no_of_days = convert_string_to_list_of_tuples(row['Departure/Return Days'])
-        airlines = list(row['Airlines'].split(","))
+        #airlines = list(row['Airlines'].split(","))
+        airlines = convert_string_to_list_of_tuples_for_airlines(row['Airlines'])
         for nod in no_of_days:
             departure_days = nod[0]
             flights_data = flyin_app.flights_oneway_data(row['Travel_Type'], row['Origin_Code'], row['Origin_City'], row['Origin_Country'],
@@ -800,7 +872,9 @@ if __name__ == '__main__':
     return_flights = []
     for index, row in return_routes_data.iterrows():
         no_of_days = convert_string_to_list_of_tuples(row['Departure/Return Days'])
-        airlines = list(row['Airlines'].split(","))
+
+        #airlines = list(row['Airlines'].split(","))
+        airlines = convert_string_to_list_of_tuples_for_airlines(row['Airlines'])
         for nod in no_of_days:
             departure_days = nod[0]
             return_days = nod[1]
@@ -818,8 +892,9 @@ if __name__ == '__main__':
     flyin_data.extend(return_flights)
     print("Final Flyin Data")
     print(flyin_data)
-    #filename = utils.writeToFile(flyin_data, data.get('output_location'), 'flyin')
-    #utils.saveToS3(filename)
+
+    # filename = utils.writeToFile(flyin_data, data.get('output_location'), 'flyin')
+    # utils.saveToS3(filename)
     app_end_time = datetime.now()
     print("the end time is {}".format(str(app_end_time)))
     print("timetaken is {}".format(str(app_end_time - app_start_time)))

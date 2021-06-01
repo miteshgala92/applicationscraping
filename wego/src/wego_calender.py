@@ -94,7 +94,3 @@ def monthend(date):
 #print(departure_date)
 #b = Return(departure_date, 2)
 #print(b)
-# a = y_cord(1160,495,5,5)
-# print(a)
-#b = y_cord(484,676,4,5)
-#print(b)

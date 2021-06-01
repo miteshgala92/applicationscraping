@@ -153,7 +153,8 @@ class BookingHotels:
                     "checkin_date": self.checkin_date,
                     "checkout_date": self.checkout_date,
                     "city": meta_data.get('city'),
-                    "hotel_name": parsed_hotel_name,
+                    "hotel_name_searched": hotel,
+                    "hotel_name_displayed": parsed_hotel_name,
                     "room_type": room_type,
                     # "currency":price.split(' ')[0],
                     "price": utils.removeNonAscii(price),
@@ -184,7 +185,7 @@ class BookingHotels:
             return extracted_data
 
 if __name__ == '__main__':
-    hotel_city=["Dubai","Sharjah","Riyadh","Jeddah","Abu-Dhabi","Dammam","Ras-Al-Khamiah","Makkah","Al-Madinah","Abha","Al-Khobar"]
+    hotel_city=["Al-Madinah"]
     for city in hotel_city:
         hotels_metadata = {'city': city}
         booking_app=BookingHotels()

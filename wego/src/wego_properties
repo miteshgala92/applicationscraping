@@ -1,0 +1,46 @@
+{
+  "app": "wego",
+  "appium":{
+   "server_details": "http://localhost:4723/wd/hub"
+  },
+  "logging": {
+    "log_file_path": "/Users/mitesh.gala/PycharmProjects/applicationscraping/wego/logs/"
+  },
+  "output_location": "/Users/mitesh.gala/PycharmProjects/applicationscraping/wego/target/",
+  "credentials_location": "/Users/mitesh.gala/PycharmProjects/applicationscraping/wego/credentials/credentials.json",
+  "tokenpickel_location": "/Users/mitesh.gala/PycharmProjects/applicationscraping/wego/credentials/token.pickle",
+  "SAMPLE_SPREADSHEET_ID" : "1PFGCxQukL84EOlOkvdncQaOTmzluDm9DjOR8nwpBp8A",
+  "SAMPLE_RANGE_NAME" : "Wego_Flights!A1:J",
+  "details": {
+    "elements": {
+      "select_flight_option": "com.wego.android.home:id/flight_big_button",
+      "one_way_toggle": "com.wego.android:id/one_way",
+      "departure": "com.wego.android:id/flight_search_location_origin",
+      "destination": "com.wego.android:id/flight_search_location_destination",
+      "search_box": "com.wego.android:id/flight_search_location_textview",
+      "search_locations": "com.wego.android:id/flight_search_location_listview",
+      "departure_date": "com.wego.android:id/layoutDepartureDate",
+      "select_passengers": "com.wego.android:id/labelPassenger_container",
+      "select_adults": "com.wego.android:id/adult_container",
+      "passengers_done_button": "com.wego.android:id/header_done",
+      "search_button": "com.wego.android:id/flight_search_button",
+      "rate_view_edit": "com.wego.android:id/rate_view_edit",
+      "booking_option_count": "com.wego.android:id/tvBookOptionsCount",
+      "provider_name": "com.wego.android:id/tvProviderName",
+      "flight_type": "com.wego.android:id/tvFlightStops",
+      "flight_price_button": "com.wego.android:id/flight_price_button",
+      "row_flight_search_result_contents": "//*[@resource-id='com.wego.android:id/row_flight_search_result_contents']",
+      "navigate_up": "com.wego.android:id/icon",
+      "select_airways": "com.flyin.bookings:id/airways_name",
+      "continue_button": "com.flyin.bookings:id/btn_return_flights",
+      "review_trip":"com.flyin.bookings:id/toolbar_title",
+      "img_onward":"com.flyin.bookings:id/img_onward",
+      "img_return_flight":"com.flyin.bookings:id/img_return_flight",
+      "airline_code":"com.flyin.bookings:id/airline_code",
+      "base_price": "com.flyin.bookings:id/passenger_price",
+      "taxes_and_fees": "com.flyin.bookings:id/tax_price",
+      "other_fees": "com.flyin.bookings:id/service_price",
+      "vat": "com.flyin.bookings:id/vat_price",
+      "total_price": "com.flyin.bookings:id/total_price"
+    }}
+}
